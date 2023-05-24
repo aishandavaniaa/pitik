@@ -14,8 +14,9 @@
             android:title="Chat" />
         <item
             android:id="@+id/nav_profile_id"
-            android:icon="@drawable/ic_person_black_24dp"
-            android:title="Profile" />
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:title="Profile"
+            />
         <item
             android:id="@+id/nav_notebooks_id"
             android:title="Notebooks"
