@@ -1,12 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="#FFC107">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Message Fragment"
-        android:textSize="30sp"
-        android:layout_centerInParent="true"/>
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="301dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/dashboard_round"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp">
+    </EditText>
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="301dp"
+        android:layout_height="121dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/dashboard_round"
+        android:padding="10dp"
+        android:layout_marginLeft="30dp">
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="301dp"
+        android:layout_height="121dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="330dp"
+        android:background="@drawable/dashboard_round"
+        android:padding="10dp"></EditText>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="87dp"
+        android:layout_height="82dp"
+        android:src="@drawable/ayamm"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="50dp"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="82dp"
+        android:layout_height="84dp"
+        android:src="@drawable/farm"
+        android:layout_marginTop="205dp"
+        android:layout_marginLeft="50dp"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="80dp"
+        android:layout_height="87dp"
+        android:src="@drawable/syringee"
+        android:layout_marginTop="348dp"
+        android:layout_marginLeft="50dp"/>
+
+
+</FrameLayout>
+

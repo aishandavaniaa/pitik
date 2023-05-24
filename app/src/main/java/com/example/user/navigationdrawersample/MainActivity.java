@@ -115,18 +115,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .commit();
                 closeDrawer();
                 break;
-            case R.id.nav_send_id:
-                Toast.makeText(this, "Send Pressed", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_share_id:
-                Toast.makeText(this, "Share Pressed", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_photos_id:
-                Toast.makeText(this, "Photos Pressed", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.nav_trash_id:
-                Toast.makeText(this, "Trash Pressed", Toast.LENGTH_SHORT).show();
-                break;
+
             case R.id.nav_settings_id:
                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new SettingsFragment())
                         .commit();
