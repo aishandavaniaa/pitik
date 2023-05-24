@@ -116,12 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 closeDrawer();
                 break;
 
-            case R.id.nav_settings_id:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new SettingsFragment())
-                        .commit();
-                deSelectCheckedState();
-                closeDrawer();
-                break;
+
         }
         return true;
     }

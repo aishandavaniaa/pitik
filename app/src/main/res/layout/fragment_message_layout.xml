@@ -14,11 +14,11 @@
         android:id="@+id/editText1"
         android:layout_width="301dp"
         android:layout_height="121dp"
+        android:layout_marginLeft="30dp"
         android:layout_marginTop="50dp"
         android:background="@drawable/dashboard_round"
         android:padding="10dp"
-        android:layout_marginLeft="30dp">
-    </EditText>
+        android:autofillHints=""></EditText>
 
     <EditText
         android:id="@+id/editText2"
@@ -184,6 +184,85 @@
         android:textColor="@color/black"
         android:textSize="18dp"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/ayammasuk"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="96dp"
+        android:ems="20"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/ayammati"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="116dp"
+        android:ems="20"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/jumlahayam"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="136dp"
+        android:ems="20"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/mingguini"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="235dp"
+        android:layout_marginTop="232dp"
+        android:ems="20"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/bulanini"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="252dp"
+        android:ems="20"
+        android:inputType="number"
+        tools:ignore="LabelFor" />
+
+    <EditText
+        android:id="@+id/stokpakan"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="272dp"
+        android:ems="20"
+        android:inputType="number"
+        tools:ignore="LabelFor"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/tanggalovk"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="372dp"
+        android:ems="20"
+        android:inputType="number"
+        tools:ignore="LabelFor"
+        android:autofillHints="" />
+
+    <EditText
+        android:id="@+id/nextovk"
+        android:layout_width="85dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="235dp"
+        android:layout_marginTop="392dp"
+        android:ems="20"
+        android:inputType="number"
+        tools:ignore="LabelFor"
+        android:autofillHints="" />
 
 
 </FrameLayout>

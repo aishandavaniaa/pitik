@@ -6,21 +6,20 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_message_id"
-            android:icon="@drawable/ic_email_black_24dp"
+            android:icon="@drawable/ic_baseline_home_24"
             android:title="Dashboard" />
         <item
             android:id="@+id/nav_chat_id"
-            android:icon="@drawable/ic_message_black_24dp"
+            android:icon="@drawable/chicken"
             android:title="Data Ayam" />
         <item
             android:id="@+id/nav_profile_id"
-            android:drawableLeft="@drawable/ic_person_black_24dp"
-            android:title="Data Pakan"
-            />
+            android:icon="@drawable/farmhouse"
+            android:title="Data Pakan" />
         <item
             android:id="@+id/nav_notebooks_id"
             android:title="Data OVK"
-            android:icon="@drawable/ic_book_black_24dp"
+            android:icon="@drawable/syringe"
             />
     </group>
 
@@ -33,11 +32,7 @@
                 android:icon="@drawable/ic_brightness_3_black_24dp"
                 app:actionLayout="@layout/nav_drawer_darkmode_switch"
                 />
-            <item
-                android:id="@+id/nav_settings_id"
-                android:title="Settings"
-                android:icon="@drawable/ic_settings_black_24dp"
-                />
+
         </menu>
     </item>
 
