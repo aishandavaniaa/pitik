@@ -1,12 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
-
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="#FFC107">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chat Fragment"
+        android:text=""
         android:textSize="30sp"
         android:layout_centerInParent="true"/>
 
-</RelativeLayout>
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/round3"
+        android:drawableLeft="@drawable/ic_baseline_date_range_24"
+        android:drawablePadding="5dp"
+        android:hint="dd/MM/yyyy"
+        android:inputType="number"
+        android:maxLength="10"
+        android:padding="10dp">
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:text="Tanggal Masuk"
+        />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/editText1"
+        android:layout_marginTop="100dp"
+        android:text="Jumlah Masuk" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView2"
+        android:layout_alignLeft="@id/textView2"
+        android:layout_marginTop="130dp"
+        android:background="@drawable/round3"
+        android:inputType="text"
+        android:maxLength="20"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editText2"
+        android:layout_alignLeft="@id/editText2"
+        android:layout_marginTop="180dp"
+        android:text="Harga Satuan" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textView3"
+        android:layout_alignLeft="@id/textView3"
+        android:layout_marginTop="210dp"
+        android:background="@drawable/round3"
+        android:inputType="date"
+        android:padding="10dp" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="280dp"
+        android:text="CANCEL" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="280dp"
+        android:text="DELETE"
+        />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="280dp"
+        android:text="SAVE" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="400dp"
+        android:layout_marginLeft="280dp"
+        android:text="+  add" />
+
+</FrameLayout>
+
