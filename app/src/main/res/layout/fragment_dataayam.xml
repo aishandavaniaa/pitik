@@ -1,23 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:background="#FFC107">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:background="#FFC107"
+    tools:context=".fragment_dataayam">
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="301dp"
-        android:layout_height="121dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/dashboard_round"></EditText>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- TODO: Update blank fragment layout -->
+        <EditText
+            android:id="@+id/editText1"
+            android:editable="false"
+            android:layout_width="350dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/dashboard_round"
+            android:padding="10dp"
+            android:autofillHints=""></EditText>
+
+        <Button
+            android:id="@+id/btnSixFragment3"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button Number 3" />
+
+        <EditText
+            android:id="@+id/editText2"
+            android:editable="false"
+            android:layout_width="350dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/dashboard_round"
+            android:padding="10dp"
+            android:autofillHints=""></EditText>
+
+        <Button
+            android:id="@+id/btnSixFragment2"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button Number 3" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:editable="false"
+            android:layout_width="350dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/dashboard_round"
+            android:padding="10dp"
+            android:autofillHints=""></EditText>
+
+
+
+        <Button
+            android:id="@+id/btnSixFragment1"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button Number 3" />
+
+        <EditText
+            android:id="@+id/editText4"
+            android:editable="false"
+            android:layout_width="350dp"
+            android:layout_height="121dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/dashboard_round"
+            android:padding="10dp"
+            android:autofillHints=""></EditText>
+
+        <Button
+            android:id="@+id/btnSixFragment4"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button Number 3" />
+
+
+
+    </LinearLayout>
+
 
 
 </ScrollView>
-
-
-
-
-
-
 
