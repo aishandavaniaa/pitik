@@ -5,12 +5,12 @@
     android:padding="10dp">
     <gradient android:angle="270"
         android:endColor="#FFFFFF" android:startColor="#FFFFFF" />
-    <stroke android:width="4dp" android:color="#191B18" />
+    <stroke android:width="2dp" android:color="#191B18" />
 
     <solid android:color="#F8FAF9"/>
     <corners
-        android:bottomRightRadius="10dp"
-        android:bottomLeftRadius="10dp"
-        android:topLeftRadius="10dp"
-        android:topRightRadius="10dp" />
+        android:bottomRightRadius="5dp"
+        android:bottomLeftRadius="5dp"
+        android:topLeftRadius="5dp"
+        android:topRightRadius="5dp" />
 </shape>
