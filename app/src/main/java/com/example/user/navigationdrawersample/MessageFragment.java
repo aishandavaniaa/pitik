@@ -15,3 +15,4 @@ public class MessageFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_message_layout,container,false);
     }
 }
+

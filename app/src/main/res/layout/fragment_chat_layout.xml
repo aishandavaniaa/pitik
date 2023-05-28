@@ -26,11 +26,11 @@
         android:drawableLeft="@drawable/ic_baseline_date_range_24"
         android:drawablePadding="5dp"
         android:hint="dd/MM/yyyy"
-        android:inputType="number"
-        android:maxLength="10"
+        android:format12Hour="dd.MM.yyyy"
+        android:format24Hour="@null"
         android:padding="10dp">
 
-        <requestFocus />
+
     </EditText>
 
     <TextView
