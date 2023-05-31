@@ -14,6 +14,8 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.user.navigationdrawersample.fragment.DataAyamFragment;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Toolbar toolbar;
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 closeDrawer();
                 break;
             case R.id.nav_chat_id:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new ChatFragment())
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new DataAyamFragment())
                         .commit();
                 closeDrawer();
                 break;

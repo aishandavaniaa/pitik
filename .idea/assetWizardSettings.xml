@@ -23,7 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$PROJECT_DIR$/../../../MARISA%20SETYA/AppData/Local/Android/Sdk/icons/material/materialicons/date_range/baseline_date_range_24.xml" />
+                                      <entry key="url" value="file:/$PROJECT_DIR$/../AppData/Local/Android/Sdk/icons/material/materialicons/delete/baseline_delete_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -34,7 +34,8 @@
                         <option name="values">
                           <map>
                             <entry key="autoMirrored" value="true" />
-                            <entry key="outputName" value="ic_baseline_date_range_24" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_baseline_delete_24" />
                             <entry key="sourceFile" value="C:\Users\User" />
                           </map>
                         </option>
