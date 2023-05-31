@@ -13,10 +13,10 @@
             android:name=".data_ayam"
             android:exported="false" />
         <activity
-            android:name=".login"
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

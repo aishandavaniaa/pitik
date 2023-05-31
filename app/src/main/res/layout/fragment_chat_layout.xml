@@ -26,6 +26,8 @@
         android:drawableLeft="@drawable/ic_baseline_date_range_24"
         android:drawablePadding="5dp"
         android:hint="dd/MM/yyyy"
+        android:fontFamily="@font/poppinsregular"
+        android:textSize="12sp"
         android:format12Hour="dd.MM.yyyy"
         android:format24Hour="@null"
         android:padding="10dp">
@@ -40,6 +42,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"
         android:text="Tanggal Masuk"
         />
 
@@ -50,6 +56,10 @@
         android:layout_below="@+id/editText1"
         android:layout_alignLeft="@+id/editText1"
         android:layout_marginTop="100dp"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"
         android:text="Jumlah Masuk" />
 
     <EditText
@@ -61,6 +71,10 @@
         android:layout_marginTop="130dp"
         android:background="@drawable/round3"
         android:inputType="text"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"
         android:maxLength="20"
         android:padding="10dp" />
 
@@ -70,6 +84,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editText2"
         android:layout_alignLeft="@id/editText2"
+        android:textAlignment="center"
+        android:textSize="12sp"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppinsregular"
         android:layout_marginTop="180dp"
         android:text="Harga Satuan" />
 
@@ -89,7 +107,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="280dp"
-        android:text="CANCEL" />
+        android:text="CANCEL"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:fontFamily="@font/poppinsbold"/>
 
     <Button
         android:id="@+id/button2"
@@ -97,6 +118,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="140dp"
         android:layout_marginTop="280dp"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:fontFamily="@font/poppinsbold"
         android:text="DELETE"
         />
 
@@ -106,6 +130,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="280dp"
         android:layout_marginTop="280dp"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:fontFamily="@font/poppinsbold"
         android:text="SAVE" />
 
     <Button
@@ -115,6 +142,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="400dp"
         android:layout_marginLeft="280dp"
+        android:textAlignment="center"
+        android:paddingTop="12dp"
+        android:fontFamily="@font/poppinsbold"
         android:text="+  add" />
 
 </FrameLayout>
