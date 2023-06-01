@@ -1,13 +1,32 @@
 package com.example.user.navigationdrawersample.fragment;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.user.navigationdrawersample.Auth.ApiServices;
+import com.example.user.navigationdrawersample.Model.DataAyam;
 import com.example.user.navigationdrawersample.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -56,13 +75,117 @@ public class DataAyamFragment extends Fragment {
         }
     }
     RecyclerView rv_data;
+    List<DataAyam> data = new ArrayList<>();
+    CustomAdapterDataAyam adapter;
+    SwipeRefreshLayout swipeRefreshLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_data_ayam, container, false);
-
+        rv_data = view.findViewById(R.id.rv_dataayam);
+        swipeRefreshLayout = view.findViewById(R.id.refresh);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        rv_data.setLayoutManager(layoutManager);
+        adapter = new CustomAdapterDataAyam( data, getContext());
+        rv_data.setAdapter(adapter);
+        loadData();
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadData();
+            }
+        });
         return view;
 
     }
+
+    private void loadData() {
+        swipeRefreshLayout.setRefreshing(true);
+        ApiServices.readDataAyam(getContext(), new ApiServices.DataAyamResponseListener() {
+            @Override
+            public void onSuccess(List<DataAyam> dataAyamList) {
+                adapter = new CustomAdapterDataAyam( dataAyamList, getContext());
+                rv_data.setAdapter(adapter);
+                data = dataAyamList;
+                adapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+
+            @Override
+            public void onError(String message) {
+                Log.e("Failed to load", message);
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+    }
+
+    public static class CustomAdapterDataAyam extends RecyclerView.Adapter<CustomAdapterDataAyam.ViewHolder> {
+        private List<DataAyam> dataAyamList;
+        private Context context;
+        private LayoutInflater layoutInflater;
+
+        public CustomAdapterDataAyam(List<DataAyam> dataAyamList, Context context) {
+            this.dataAyamList = dataAyamList;
+            this.context = context;
+            this.layoutInflater = LayoutInflater.from(context);
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = layoutInflater.inflate(R.layout.item_list_ayam, parent, false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            holder.tglmasuk.setText(dataAyamList.get(position).getTanggalMasuk());
+            holder.jumlahmasuk.setText(dataAyamList.get(position).getJumlahMasuk());
+            holder.hargasatuan.setText(dataAyamList.get(position).getHargaSatuan());
+            holder.mati.setText(dataAyamList.get(position).getMati());
+            holder.totalharga.setText(dataAyamList.get(position).getTotalHarga());
+            holder.totalayam.setText(dataAyamList.get(position).getTotalAyam());
+            holder.edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = holder.getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+                    }
+                }
+            });
+            holder.hapus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = holder.getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
+
+
+                    }
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return dataAyamList.size();
+        }
+
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            TextView tglmasuk, jumlahmasuk, hargasatuan, mati, totalharga, totalayam;
+            FrameLayout edit, hapus;
+            public ViewHolder(View itemView) {
+                super(itemView);
+                tglmasuk = itemView.findViewById(R.id.tglmasuk);
+                jumlahmasuk = itemView.findViewById(R.id.jumlahmasuk);
+                hargasatuan = itemView.findViewById(R.id.hrgsatuan);
+                mati = itemView.findViewById(R.id.mati);
+                totalharga = itemView.findViewById(R.id.total);
+                totalayam = itemView.findViewById(R.id.totalayam);
+                edit = itemView.findViewById(R.id.editdata);
+                hapus = itemView.findViewById(R.id.hapusdata);
+            }
+        }
+    }
+
 }

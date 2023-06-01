@@ -1,6 +1,9 @@
 package com.example.user.navigationdrawersample.Model;
 
-public class DataAyam {
+import java.io.Serializable;
+
+public class DataAyam implements Serializable {
+    private String id;
     private String tanggalMasuk;
     private String jumlahMasuk;
     private String hargaSatuan;
@@ -8,7 +11,8 @@ public class DataAyam {
     private String totalHarga;
     private String totalAyam;
 
-    public DataAyam(String tanggalMasuk, String jumlahMasuk, String hargaSatuan, String mati, String totalHarga, String totalAyam) {
+    public DataAyam(String id,String tanggalMasuk, String jumlahMasuk, String hargaSatuan, String mati, String totalHarga, String totalAyam) {
+        this.id = id;
         this.tanggalMasuk = tanggalMasuk;
         this.jumlahMasuk = jumlahMasuk;
         this.hargaSatuan = hargaSatuan;
@@ -16,6 +20,8 @@ public class DataAyam {
         this.totalHarga = totalHarga;
         this.totalAyam = totalAyam;
     }
+
+    public String getId(){ return id;}
 
     public String getTanggalMasuk() {
         return tanggalMasuk;

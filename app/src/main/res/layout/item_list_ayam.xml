@@ -2,12 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_data">
+    android:background="@drawable/bg_data"
+    android:layout_marginVertical="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="20dp"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="wrap_content"
@@ -100,12 +101,33 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mati                          : "
+                android:text="Mati                           : "
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
             <TextView
                 android:id="@+id/mati"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:fontFamily="@font/poppinsregular"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Ayam         : "
+                android:textSize="14sp"
+                android:fontFamily="@font/poppinsbold"
+                android:textColor="@color/black"/>
+            <TextView
+                android:id="@+id/totalayam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -120,29 +142,31 @@
             android:orientation="horizontal"
             android:layout_gravity="end">
 
-        <FrameLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="end"
-            android:background="@drawable/bg_crud">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_edit_24"/>
-        </FrameLayout>
-        <FrameLayout
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_gravity="end"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/bg_crud">
-            <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_baseline_delete_24"/>
-        </FrameLayout>
+            <FrameLayout
+                android:id="@+id/editdata"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:background="@drawable/bg_crud">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_edit_24"/>
+            </FrameLayout>
+            <FrameLayout
+                android:id="@+id/hapusdata"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/bg_crud">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_delete_24"/>
+            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 
