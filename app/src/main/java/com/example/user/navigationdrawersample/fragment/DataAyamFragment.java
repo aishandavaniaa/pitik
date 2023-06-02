@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.user.navigationdrawersample.AddDataAyamActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
+import com.example.user.navigationdrawersample.EditDataAyamActivity;
 import com.example.user.navigationdrawersample.Model.DataAyam;
 import com.example.user.navigationdrawersample.R;
 
@@ -162,7 +163,9 @@ public class DataAyamFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-
+                        Intent intent = new Intent(context, EditDataAyamActivity.class);
+                        intent.putExtra("dataayam", dataAyamList.get(pos));
+                        context.startActivity(intent);
                     }
                 }
             });
@@ -171,7 +174,41 @@ public class DataAyamFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
+                        AlertDialog.Builder alert =new AlertDialog.Builder(context);
+                        View alertView =LayoutInflater.from(context).inflate(R.layout.popup_delete,
+                                (LinearLayout) view.findViewById(R.id.popup_box));
+                        alert.setView(alertView);
+                        final AlertDialog dialog = alert.create();
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                        dialog.show();
+                        Button ok, batal;
+                        ok = alertView.findViewById(R.id.btl_ok);
+                        batal = alertView.findViewById(R.id.btl_batal);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ApiServices.deleteDataAyam(context, dataAyamList.get(pos).getId(), new ApiServices.DeleteDataAyamResponseListener() {
+                                    @Override
+                                    public void onSuccess(String response) {
+                                        // Notify the adapter
+                                        Toast.makeText(alertView.getContext(), response, Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
 
+                                    @Override
+                                    public void onError(String message) {
+                                        Toast.makeText(alertView.getContext(), "Gagal menghapus data", Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
+                                });
+                            }
+                        });
+                        batal.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.cancel();
+                            }
+                        });
                     }
                 }
             });

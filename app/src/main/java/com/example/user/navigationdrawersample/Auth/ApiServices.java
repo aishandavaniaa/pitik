@@ -36,6 +36,10 @@ public class ApiServices {
         void onSuccess(List<DataAyam> dataAyamList);
         void onError(String message);
     }
+    public interface DeleteDataAyamResponseListener {
+        void onSuccess(String response);
+        void onError(String message);
+    }
 
     //create data ayam
     public static void createDataAyam(Context context, String tanggal_masuk, String jumlah_masuk, String harga_satuan, String mati, CreateDataAyamResponseListener listener) {
@@ -146,5 +150,94 @@ public class ApiServices {
         requestQueue.add(stringRequest);
     }
 
+    //update data ayam
+    public static void updateDataAyam(Context context, String id, String tanggal_masuk, String jumlah_masuk, String harga_satuan,String mati, CreateDataAyamResponseListener listener) {
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "data-ayam/" + id, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String message = jsonObject.getString("message");
+                    if (message.equals("success")) {
+                        JSONObject data = jsonObject.getJSONObject("dataayam");
+                        listener.onSuccess(data);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (error.networkResponse != null && error.networkResponse.data != null) {
+                            try {
+                                String responseBody = new String(error.networkResponse.data, "utf-8");
+                                JSONObject jsonObject = new JSONObject(responseBody);
+                                String message = jsonObject.getString("message");
+                                listener.onError(message);
+                            } catch (JSONException | UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                                listener.onError("Gagal tambah data: " + e.getMessage());
+                            }
+                        } else {
+                            listener.onError("Gagal register: network response is null");
+                        }
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("tanggal_masuk", tanggal_masuk);
+                params.put("jumlah_masuk", jumlah_masuk);
+                params.put("harga_satuan", harga_satuan);
+                params.put("mati", mati);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
+    //delete data ayam
+    public static void deleteDataAyam(Context context, String id, DeleteDataAyamResponseListener listener) {
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "data-ayam/" + id, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String message = jsonObject.getString("message");
+                    if (message.equals("success")) {
+                        listener.onSuccess("Berhasil menghapus data");
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (error.networkResponse != null && error.networkResponse.data != null) {
+                            try {
+                                String responseBody = new String(error.networkResponse.data, "utf-8");
+                                JSONObject jsonObject = new JSONObject(responseBody);
+//                                String message = jsonObject.getString("message");
+//                                listener.onError(message);
+                            } catch (JSONException | UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                                listener.onError("Gagal hapus data: " + e.getMessage());
+                            }
+                        } else {
+                            listener.onError("Gagal hapus: network response is null");
+                        }
+                    }
+                })
+        {
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
 
 }
