@@ -1,5 +1,6 @@
 package com.example.user.navigationdrawersample.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.navigationdrawersample.AddDataAyamActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
 import com.example.user.navigationdrawersample.Model.DataAyam;
 import com.example.user.navigationdrawersample.R;
@@ -76,14 +78,17 @@ public class DataAyamFragment extends Fragment {
     }
     RecyclerView rv_data;
     List<DataAyam> data = new ArrayList<>();
+    Button add;
     CustomAdapterDataAyam adapter;
     SwipeRefreshLayout swipeRefreshLayout;
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_data_ayam, container, false);
         rv_data = view.findViewById(R.id.rv_dataayam);
+        add = view.findViewById(R.id.add);
         swipeRefreshLayout = view.findViewById(R.id.refresh);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv_data.setLayoutManager(layoutManager);
@@ -96,11 +101,17 @@ public class DataAyamFragment extends Fragment {
                 loadData();
             }
         });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AddDataAyamActivity.class);
+                startActivity(i);
+            }
+        });
         return view;
 
     }
-
-    private void loadData() {
+    private void loadData(){
         swipeRefreshLayout.setRefreshing(true);
         ApiServices.readDataAyam(getContext(), new ApiServices.DataAyamResponseListener() {
             @Override
@@ -118,8 +129,8 @@ public class DataAyamFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-    }
 
+    }
     public static class CustomAdapterDataAyam extends RecyclerView.Adapter<CustomAdapterDataAyam.ViewHolder> {
         private List<DataAyam> dataAyamList;
         private Context context;
@@ -151,6 +162,7 @@ public class DataAyamFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
+
                     }
                 }
             });
@@ -159,7 +171,6 @@ public class DataAyamFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-
 
                     }
                 }

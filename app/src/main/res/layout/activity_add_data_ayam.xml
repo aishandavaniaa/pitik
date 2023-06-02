@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".AddDataAyamActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/yellow">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginTop="2dp"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/poppinsbold"
+            android:textSize="14sp"
+            android:text="Tambah Data Ayam"/>
+    </FrameLayout>
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Tanggal Masuk"
+            />
+        <EditText
+            android:id="@+id/tanggalmasuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/round3"
+            android:drawableLeft="@drawable/ic_baseline_date_range_24"
+            android:drawablePadding="5dp"
+            android:hint="dd/MM/yyyy"
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:fontFamily="@font/poppinsregular"
+            android:textSize="12sp"
+            android:padding="10dp">
+        </EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/editText1"
+            android:textAlignment="center"
+            android:layout_marginTop="15dp"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:text="Jumlah Masuk" />
+
+        <EditText
+            android:id="@+id/jumlahmasuk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/round3"
+            android:inputType="number"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:maxLength="20"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:layout_marginTop="15dp"
+            android:text="Harga Satuan" />
+        <EditText
+            android:id="@+id/hargasatuan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:inputType="number"
+            android:background="@drawable/round3"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:padding="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:layout_marginTop="15dp"
+            android:text="Mati" />
+        <EditText
+            android:id="@+id/mati"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsregular"
+            android:layout_below="@id/textView3"
+            android:layout_alignLeft="@id/textView3"
+            android:layout_marginTop="5dp"
+            android:inputType="number"
+            android:background="@drawable/round3"
+            android:padding="10dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="end"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/reset"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textAlignment="center"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_red"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Reset"
+                />
+
+            <Button
+                android:id="@+id/save"
+                android:background="@drawable/button_green"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textAlignment="center"
+                android:paddingTop="2dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsbold"
+                android:text="SAVE" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
+
