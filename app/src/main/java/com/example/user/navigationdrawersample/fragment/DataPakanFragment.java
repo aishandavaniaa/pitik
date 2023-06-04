@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.navigationdrawersample.AddDataPakanActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
 import com.example.user.navigationdrawersample.Model.DataPakan;
 import com.example.user.navigationdrawersample.R;
@@ -94,12 +95,17 @@ public class DataPakanFragment extends Fragment {
         adapter = new CustomAdapterDataPakan( data, getContext());
         rv_data.setAdapter(adapter);
 
-        loadData();
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 loadData();
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AddDataPakanActivity.class);
+                startActivity(i);
             }
         });
 
