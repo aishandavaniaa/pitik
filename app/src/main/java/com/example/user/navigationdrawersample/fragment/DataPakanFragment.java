@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.example.user.navigationdrawersample.AddDataPakanActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
+import com.example.user.navigationdrawersample.EditDataPakanActivity;
 import com.example.user.navigationdrawersample.Model.DataPakan;
 import com.example.user.navigationdrawersample.R;
 
@@ -162,7 +163,9 @@ public class DataPakanFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-
+                        Intent intent = new Intent(context, EditDataPakanActivity.class);
+                        intent.putExtra("datapakan", dataPakanList.get(pos));
+                        context.startActivity(intent);
                     }
                 }
             });
@@ -171,7 +174,42 @@ public class DataPakanFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
+                        AlertDialog.Builder alert =new AlertDialog.Builder(context);
+                        View alertView =LayoutInflater.from(context).inflate(R.layout.popup_delete,
+                                (LinearLayout) view.findViewById(R.id.popup_box));
+                        alert.setView(alertView);
+                        final AlertDialog dialog = alert.create();
+                        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+                        dialog.show();
+                        Button ok, batal;
+                        ok = alertView.findViewById(R.id.btl_ok);
+                        batal = alertView.findViewById(R.id.btl_batal);
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                ApiServices.deleteDataPakan(context, dataPakanList.get(pos).getId(), new ApiServices.DeleteDataPakanResponseListener() {
+                                    @Override
+                                    public void onSuccess(String response) {
+                                        Toast.makeText(alertView.getContext(), response, Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
+
+                                    @Override
+                                    public void onError(String message) {
+                                        Toast.makeText(alertView.getContext(), "Gagal menghapus data", Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
+                                });
+                            }
+                        });
+                        batal.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialog.cancel();
+                            }
+                        });
                     }
+
                 }
             });
         }
