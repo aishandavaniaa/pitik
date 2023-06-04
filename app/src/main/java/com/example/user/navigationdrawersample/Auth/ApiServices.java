@@ -9,6 +9,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.user.navigationdrawersample.Model.DataAyam;
+import com.example.user.navigationdrawersample.Model.DataPakan;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -239,5 +240,69 @@ public class ApiServices {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+    public interface DataPakanResponseListener {
+        void onSuccess(List<DataPakan> dataPakanList);
+        void onError(String message);
+    }
+
+    //read data pakan
+    public static void readDataPakan(Context context, final DataPakanResponseListener listener){
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "data-pakan", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String message = jsonObject.getString("message");
+                    List<DataPakan> dataPakans = new ArrayList<>();
+                    if (message.equals("success")) {
+                        JSONArray dataArray = jsonObject.getJSONArray("datapakan");
+                        for (int i = 0; i < dataArray.length(); i++) {
+                            JSONObject dataPakanObj = dataArray.getJSONObject(i);
+                            // Retrieve data details from the nested object
+                            String id = dataPakanObj.getString("id");
+                            String pembelian = dataPakanObj.getString("pembelian");
+                            String jenis = dataPakanObj.getString("jenis_pakan");
+                            String stok = dataPakanObj.getString("stok_pakan");
+                            String harga = dataPakanObj.getString("harga_kg");
+                            String totalharga = dataPakanObj.getString("total_harga");
+                            SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                            Date parsedDate = inputFormat.parse(pembelian);
+
+                            // Format tanggal ke dalam format dd-MMMM-yyyy
+                            SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy");
+                            String formattedPembelian = outputFormat.format(parsedDate);
+
+                            DataPakan dataPakan = new DataPakan(id,formattedPembelian,jenis,stok,harga,totalharga);
+                            dataPakans.add(dataPakan);
+                        }
+                        listener.onSuccess(dataPakans);
+                    }
+                } catch (JSONException | ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error.networkResponse != null && error.networkResponse.data != null) {
+                    try {
+                        String responseBody = new String(error.networkResponse.data, "utf-8");
+                        JSONObject jsonObject = new JSONObject(responseBody);
+                        String message = jsonObject.getString("message");
+                        listener.onError(message);
+                    } catch (JSONException | UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                        listener.onError("Gagal mendapatkan data: " + e.getMessage());
+                    }
+                } else {
+                    listener.onError("Gagal mendapatkan data: network response is null");
+                }
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
 
 }
