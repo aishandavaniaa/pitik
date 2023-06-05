@@ -1,5 +1,6 @@
 package com.example.user.navigationdrawersample;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.user.navigationdrawersample.fragment.DataAyamFragment;
+import com.example.user.navigationdrawersample.fragment.DataPakanFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -22,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout drawerLayout;
     private FrameLayout frameLayout;
     private NavigationView navigationView;
-    private SwitchCompat darkModeSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initializeViews();
         toggleDrawer();
         initializeDefaultFragment(savedInstanceState,0);
-        setDarkModeSwitchListener();
 
     }
 
@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         frameLayout = findViewById(R.id.framelayout_id);
         navigationView = findViewById(R.id.navigationview_id);
         navigationView.setNavigationItemSelectedListener(this);
-        darkModeSwitch = (SwitchCompat)navigationView.getMenu().findItem(R.id.nav_darkmode_id).getActionView();
     }
 
     /**
@@ -98,11 +97,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.nav_chat_id:
                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new DataAyamFragment())
+                        .addToBackStack(null)
                         .commit();
                 closeDrawer();
                 break;
             case R.id.nav_profile_id:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new ProfileFragment())
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new DataPakanFragment())
+                        .addToBackStack(null)
                         .commit();
                 closeDrawer();
                 break;
@@ -111,27 +112,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .commit();
                 closeDrawer();
                 break;
-
+            case R.id.logout:
+                Intent i = new Intent(MainActivity.this, login.class);
+                startActivity(i);
+                finish();
+                break;
 
         }
         return true;
-    }
-
-    /**
-     * Attach setOnCheckedChangeListener to the dark mode switch
-     */
-    private void setDarkModeSwitchListener(){
-        darkModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!isChecked){
-                    Toast.makeText(MainActivity.this, "Dark Mode Turn Off", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(MainActivity.this, "Dark Mode Turn On", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 
     /**

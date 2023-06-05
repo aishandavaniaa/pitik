@@ -17,12 +17,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tanggal Masuk : "
+                android:text="Pembelian     : "
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/tglmasuk"
+                android:id="@+id/pembelian"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -38,12 +38,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jumlah Masuk  : "
+                android:text="Jenis Pakan  : "
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/jumlahmasuk"
+                android:id="@+id/jenispakan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -59,12 +59,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Harga Satuan    : "
+                android:text="Stok Pakan    : "
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/hrgsatuan"
+                android:id="@+id/stok"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -80,12 +80,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Harga         : "
+                android:text="Harga Kg         : "
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>
             <TextView
-                android:id="@+id/total"
+                android:id="@+id/harga"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -101,28 +101,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mati                           : "
-                android:textSize="14sp"
-                android:fontFamily="@font/poppinsbold"
-                android:textColor="@color/black"/>
-            <TextView
-                android:id="@+id/mati"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:fontFamily="@font/poppinsregular"
-                android:layout_marginLeft="5dp"
-                android:textColor="@color/black"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total Ayam         : "
+                android:text="Total Harga   : "
                 android:textSize="14sp"
                 android:fontFamily="@font/poppinsbold"
                 android:textColor="@color/black"/>

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:id="@+id/refresh"
     android:layout_height="match_parent"
-    android:background="#d9d9d9"
-    tools:context=".fragment.DataAyamFragment">
+    android:background="#F4F4F4"
+    tools:context=".fragment.DataPakanFragment">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,7 +27,7 @@
                 android:background="@drawable/bg_button"/>
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_dataayam"
+                android:id="@+id/rv_datapakan"
                 android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

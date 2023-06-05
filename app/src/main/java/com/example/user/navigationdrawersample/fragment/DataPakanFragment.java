@@ -1,6 +1,5 @@
 package com.example.user.navigationdrawersample.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -22,10 +21,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.navigationdrawersample.AddDataAyamActivity;
+import com.example.user.navigationdrawersample.AddDataPakanActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
-import com.example.user.navigationdrawersample.EditDataAyamActivity;
-import com.example.user.navigationdrawersample.Model.DataAyam;
+import com.example.user.navigationdrawersample.EditDataPakanActivity;
+import com.example.user.navigationdrawersample.Model.DataPakan;
 import com.example.user.navigationdrawersample.R;
 
 import java.util.ArrayList;
@@ -33,10 +32,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DataAyamFragment#newInstance} factory method to
+ * Use the {@link DataPakanFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DataAyamFragment extends Fragment {
+public class DataPakanFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +46,7 @@ public class DataAyamFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DataAyamFragment() {
+    public DataPakanFragment() {
         // Required empty public constructor
     }
 
@@ -57,11 +56,11 @@ public class DataAyamFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DataAyamFragment.
+     * @return A new instance of fragment DataPakanFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DataAyamFragment newInstance(String param1, String param2) {
-        DataAyamFragment fragment = new DataAyamFragment();
+    public static DataPakanFragment newInstance(String param1, String param2) {
+        DataPakanFragment fragment = new DataPakanFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -77,25 +76,26 @@ public class DataAyamFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     RecyclerView rv_data;
-    List<DataAyam> data = new ArrayList<>();
+    List<DataPakan> data = new ArrayList<>();
     Button add;
-    CustomAdapterDataAyam adapter;
+    CustomAdapterDataPakan adapter;
     SwipeRefreshLayout swipeRefreshLayout;
-    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_data_ayam, container, false);
-        rv_data = view.findViewById(R.id.rv_dataayam);
+        View view = inflater.inflate(R.layout.fragment_data_pakan, container, false);
+        rv_data = view.findViewById(R.id.rv_datapakan);
         add = view.findViewById(R.id.add);
         swipeRefreshLayout = view.findViewById(R.id.refresh);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv_data.setLayoutManager(layoutManager);
-        adapter = new CustomAdapterDataAyam( data, getContext());
+        adapter = new CustomAdapterDataPakan( data, getContext());
         rv_data.setAdapter(adapter);
-        loadData();
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -105,21 +105,22 @@ public class DataAyamFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), AddDataAyamActivity.class);
+                Intent i = new Intent(getContext(), AddDataPakanActivity.class);
                 startActivity(i);
             }
         });
-        return view;
 
+        return view;
     }
-    private void loadData(){
+
+    private void loadData() {
         swipeRefreshLayout.setRefreshing(true);
-        ApiServices.readDataAyam(getContext(), new ApiServices.DataAyamResponseListener() {
+        ApiServices.readDataPakan(getContext(), new ApiServices.DataPakanResponseListener() {
             @Override
-            public void onSuccess(List<DataAyam> dataAyamList) {
-                adapter = new CustomAdapterDataAyam( dataAyamList, getContext());
+            public void onSuccess(List<DataPakan> dataPakanList) {
+                adapter = new CustomAdapterDataPakan( dataPakanList, getContext());
                 rv_data.setAdapter(adapter);
-                data = dataAyamList;
+                data = dataPakanList;
                 adapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -130,41 +131,40 @@ public class DataAyamFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-
     }
-    public static class CustomAdapterDataAyam extends RecyclerView.Adapter<CustomAdapterDataAyam.ViewHolder> {
-        private List<DataAyam> dataAyamList;
+
+    public static class CustomAdapterDataPakan extends RecyclerView.Adapter<CustomAdapterDataPakan.ViewHolder> {
+        private List<DataPakan> dataPakanList;
         private Context context;
         private LayoutInflater layoutInflater;
 
-        public CustomAdapterDataAyam(List<DataAyam> dataAyamList, Context context) {
-            this.dataAyamList = dataAyamList;
+        public CustomAdapterDataPakan(List<DataPakan> dataPakanList, Context context) {
+            this.dataPakanList = dataPakanList;
             this.context = context;
             this.layoutInflater = LayoutInflater.from(context);
         }
 
         @NonNull
         @Override
-        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = layoutInflater.inflate(R.layout.item_list_ayam, parent, false);
-            return new ViewHolder(view);
+        public CustomAdapterDataPakan.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = layoutInflater.inflate(R.layout.item_list_pakan, parent, false);
+            return new CustomAdapterDataPakan.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            holder.tglmasuk.setText(dataAyamList.get(position).getTanggalMasuk());
-            holder.jumlahmasuk.setText(dataAyamList.get(position).getJumlahMasuk());
-            holder.hargasatuan.setText(dataAyamList.get(position).getHargaSatuan());
-            holder.mati.setText(dataAyamList.get(position).getMati());
-            holder.totalharga.setText(dataAyamList.get(position).getTotalHarga());
-            holder.totalayam.setText(dataAyamList.get(position).getTotalAyam());
+        public void onBindViewHolder(@NonNull CustomAdapterDataPakan.ViewHolder holder, int position) {
+            holder.pembelian.setText(dataPakanList.get(position).getPembelian());
+            holder.jenis.setText(dataPakanList.get(position).getJenisPakan());
+            holder.harga.setText(dataPakanList.get(position).getHarga());
+            holder.stok.setText(dataPakanList.get(position).getStok());
+            holder.total.setText(dataPakanList.get(position).getTotal());
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-                        Intent intent = new Intent(context, EditDataAyamActivity.class);
-                        intent.putExtra("dataayam", dataAyamList.get(pos));
+                        Intent intent = new Intent(context, EditDataPakanActivity.class);
+                        intent.putExtra("datapakan", dataPakanList.get(pos));
                         context.startActivity(intent);
                     }
                 }
@@ -187,10 +187,9 @@ public class DataAyamFragment extends Fragment {
                         ok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ApiServices.deleteDataAyam(context, dataAyamList.get(pos).getId(), new ApiServices.DeleteDataAyamResponseListener() {
+                                ApiServices.deleteDataPakan(context, dataPakanList.get(pos).getId(), new ApiServices.DeleteDataPakanResponseListener() {
                                     @Override
                                     public void onSuccess(String response) {
-                                        // Notify the adapter
                                         Toast.makeText(alertView.getContext(), response, Toast.LENGTH_SHORT).show();
                                         dialog.cancel();
                                     }
@@ -210,26 +209,26 @@ public class DataAyamFragment extends Fragment {
                             }
                         });
                     }
+
                 }
             });
         }
 
         @Override
         public int getItemCount() {
-            return dataAyamList.size();
+            return dataPakanList.size();
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView tglmasuk, jumlahmasuk, hargasatuan, mati, totalharga, totalayam;
+            TextView pembelian, jenis, stok, harga, total;
             FrameLayout edit, hapus;
             public ViewHolder(View itemView) {
                 super(itemView);
-                tglmasuk = itemView.findViewById(R.id.tglmasuk);
-                jumlahmasuk = itemView.findViewById(R.id.jumlahmasuk);
-                hargasatuan = itemView.findViewById(R.id.hrgsatuan);
-                mati = itemView.findViewById(R.id.mati);
-                totalharga = itemView.findViewById(R.id.total);
-                totalayam = itemView.findViewById(R.id.totalayam);
+                pembelian = itemView.findViewById(R.id.pembelian);
+                jenis = itemView.findViewById(R.id.jenispakan);
+                stok = itemView.findViewById(R.id.stok);
+                harga = itemView.findViewById(R.id.harga);
+                total = itemView.findViewById(R.id.totalayam);
                 edit = itemView.findViewById(R.id.editdata);
                 hapus = itemView.findViewById(R.id.hapusdata);
             }
