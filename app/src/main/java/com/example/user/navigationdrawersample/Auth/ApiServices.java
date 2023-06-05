@@ -27,10 +27,13 @@ import java.util.Map;
 public class ApiServices {
     private static String HOST = "http://192.168.43.199:8000";
     private static String API = HOST + "/api/";
+    private static String LOGIN = API + "/login";
+
 
 
     public static String getApiLogin() {
-        return API_LOGIN;
+        return LOGIN;
+    }
 
     public interface CreateDataAyamResponseListener {
         void onSuccess(JSONObject response);
@@ -455,4 +458,4 @@ public class ApiServices {
         };
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
-    }
+    }}
