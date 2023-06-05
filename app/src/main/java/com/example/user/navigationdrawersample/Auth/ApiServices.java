@@ -25,9 +25,8 @@ import java.util.List;
 import java.util.Map;
 
 public class ApiServices {
-    private static String HOST = "http://192.168.18.23:8000";
+    private static String HOST = "http://192.168.43.199:8000";
     private static String API = HOST + "/api/";
-    private static String API_LOGIN = HOST+"/api/login";
 
 
     public static String getApiLogin() {
@@ -457,4 +456,3 @@ public class ApiServices {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
-}
