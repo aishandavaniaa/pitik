@@ -78,6 +78,7 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:id="@+id/tv_ayam_masuk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
@@ -97,7 +98,7 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
-                            android:id="@+id/tv_ayam_masuk"
+                            android:id="@+id/tv_ayam_mati"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
@@ -117,7 +118,7 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
-                            android:id="@+id/tv_ayam_mati"
+                            android:id="@+id/tv_jumlah_ayam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
