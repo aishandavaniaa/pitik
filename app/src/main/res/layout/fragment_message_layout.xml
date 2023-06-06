@@ -5,14 +5,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="#d9d9d9">
+    android:background="#ffa724">
 
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/menu_dashboard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_menu_24"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="DASHBOARD"/>
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
         <FrameLayout
+            android:id="@+id/fr_data_ayam"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
@@ -65,6 +93,190 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ayam Mati : "
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppinsbold"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/tv_ayam_masuk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:text="00"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Ayam : "
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppinsbold"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/tv_ayam_mati"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:text="00"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fr_data_pakan"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/bg_data">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/ayamm"/>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data Pakan (KGs)"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppinsbold"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Minggu Ini:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppinsbold"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/tv_minggu_ini"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:text="00"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Bulan Ini:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppinsbold"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/tv_bulan_ini"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:text="00"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Stok Pakan:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppinsbold"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/tv_stok_pakan"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:text="00"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fr_data_ovk"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/bg_data">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/syringee"/>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Data OVK"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/poppinsbold"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tanggal OVK:"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/poppinsbold"
+                            android:textSize="12sp"/>
+                        <TextView
+                            android:id="@+id/tanggal_ovk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppinsregular"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:text="00"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Next OVK:"
                             android:textColor="@color/black"
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
