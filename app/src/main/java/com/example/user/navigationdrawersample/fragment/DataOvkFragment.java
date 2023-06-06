@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.navigationdrawersample.AddDataAyamActivity;
+import com.example.user.navigationdrawersample.AddDataOvkActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
 import com.example.user.navigationdrawersample.EditDataAyamActivity;
 import com.example.user.navigationdrawersample.Model.DataAyam;
@@ -100,6 +101,13 @@ public class DataOvkFragment extends Fragment {
             @Override
             public void onRefresh() {
                 loadData();
+            }
+        });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getContext(), AddDataOvkActivity.class);
+                startActivity(i);
             }
         });
         loadData();
