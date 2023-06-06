@@ -592,7 +592,7 @@ public class ApiServices {
     }
 
     public static void readDataOvk(Context context, final DataOvkResponseListener listener){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "data-pakan", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "data-ovk", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

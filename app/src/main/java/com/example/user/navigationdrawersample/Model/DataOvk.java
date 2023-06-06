@@ -6,17 +6,17 @@ public class DataOvk implements Serializable {
     private String id;
     private String tanggalOvk;
     private String jenisOvk;
-    private String nextOvk;
     private String jumlahAyam;
+    private String nextOvk;
     private String biayaOvk;
     private String totalBiaya;
 
-    public DataOvk(String id, String tanggalOvk, String jenisOvk, String nextOvk, String jumlahAyam, String biayaOvk, String totalBiaya) {
+    public DataOvk(String id, String tanggalOvk, String jenisOvk, String jumlahAyam, String nextOvk, String biayaOvk, String totalBiaya) {
         this.id = id;
         this.tanggalOvk = tanggalOvk;
         this.jenisOvk = jenisOvk;
-        this.nextOvk = nextOvk;
         this.jumlahAyam = jumlahAyam;
+        this.nextOvk = nextOvk;
         this.biayaOvk = biayaOvk;
         this.totalBiaya = totalBiaya;
     }

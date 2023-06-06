@@ -26,6 +26,7 @@ import com.example.user.navigationdrawersample.AddDataAyamActivity;
 import com.example.user.navigationdrawersample.AddDataOvkActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
 import com.example.user.navigationdrawersample.EditDataAyamActivity;
+import com.example.user.navigationdrawersample.EditDataOvkActivity;
 import com.example.user.navigationdrawersample.Model.DataAyam;
 import com.example.user.navigationdrawersample.Model.DataOvk;
 import com.example.user.navigationdrawersample.R;
@@ -90,7 +91,7 @@ public class DataOvkFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_data_ovk, container, false);
-        rv_data = view.findViewById(R.id.rv_dataayam);
+        rv_data = view.findViewById(R.id.rv_dataovk);
         add = view.findViewById(R.id.add);
         swipeRefreshLayout = view.findViewById(R.id.refresh);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
@@ -167,7 +168,9 @@ public class DataOvkFragment extends Fragment {
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-
+                        Intent intent = new Intent(context, EditDataOvkActivity.class);
+                        intent.putExtra("dataovk", dataOvkList.get(pos));
+                        context.startActivity(intent);
                     }
                 }
             });
@@ -189,7 +192,20 @@ public class DataOvkFragment extends Fragment {
                         ok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                ApiServices.deleteDataOvk(context, dataOvkList.get(pos).getId(), new ApiServices.DeleteDataOvkResponseListener() {
+                                    @Override
+                                    public void onSuccess(String response) {
+                                        // Notify the adapter
+                                        Toast.makeText(alertView.getContext(), response, Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
 
+                                    @Override
+                                    public void onError(String message) {
+                                        Toast.makeText(alertView.getContext(), "Gagal menghapus data", Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+                                    }
+                                });
                             }
                         });
                         batal.setOnClickListener(new View.OnClickListener() {
