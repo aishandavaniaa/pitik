@@ -111,6 +111,11 @@ public class EditDataAyamActivity extends AppCompatActivity {
                     String new_harga = ehargasatuan.getText().toString().trim();
                     String new_mati = emati.getText().toString().trim();
 
+                    if (Integer.parseInt(new_mati) > Integer.parseInt(new_jumlah)) {
+                        Toast.makeText(EditDataAyamActivity.this, "Jumlah mati tidak boleh lebih besar dari jumlah masuk", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
                     ApiServices.updateDataAyam(getApplicationContext(), id, new_tanggal, new_jumlah, new_harga, new_mati, new ApiServices.CreateDataAyamResponseListener() {
                         @Override
                         public void onSuccess(JSONObject response) {

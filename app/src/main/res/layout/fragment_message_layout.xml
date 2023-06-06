@@ -5,33 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:background="#ffa724">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/menu_dashboard"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_menu_24"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="DASHBOARD"/>
-            </LinearLayout>
-        </FrameLayout>
-
-    </LinearLayout>
+    android:background="#F4F4F4">
 
     <LinearLayout
         android:layout_marginTop="100dp"
@@ -57,6 +31,7 @@
                     android:src="@drawable/ayamm"/>
                 <LinearLayout
                     android:layout_weight="1"
+                    android:layout_marginStart="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -87,6 +62,7 @@
                             android:text="00"/>
                     </LinearLayout>
                     <LinearLayout
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
@@ -146,8 +122,9 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:src="@drawable/ayamm"/>
+                    android:src="@drawable/farm"/>
                 <LinearLayout
+                    android:layout_marginStart="10dp"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -313,264 +290,5 @@
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>
-
-<!--    <EditText-->
-<!--        android:id="@+id/editText1"-->
-<!--        android:editable="false"-->
-<!--        android:layout_width="301dp"-->
-<!--        android:layout_height="121dp"-->
-<!--        android:layout_marginLeft="30dp"-->
-<!--        android:layout_marginTop="50dp"-->
-<!--        android:background="@drawable/dashboard_round"-->
-<!--        android:padding="10dp"-->
-<!--        android:autofillHints=""></EditText>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/editText2"-->
-<!--        android:editable="false"-->
-<!--        android:layout_width="301dp"-->
-<!--        android:layout_height="121dp"-->
-<!--        android:layout_marginTop="190dp"-->
-<!--        android:background="@drawable/dashboard_round"-->
-<!--        android:padding="10dp"-->
-<!--        android:layout_marginLeft="30dp">-->
-<!--    </EditText>-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/editText3"-->
-<!--        android:editable="false"-->
-<!--        android:layout_width="301dp"-->
-<!--        android:layout_height="121dp"-->
-<!--        android:layout_marginLeft="30dp"-->
-<!--        android:layout_marginTop="330dp"-->
-<!--        android:background="@drawable/dashboard_round"-->
-<!--        android:padding="10dp"></EditText>-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="87dp"-->
-<!--        android:layout_height="82dp"-->
-<!--        android:src="@drawable/ayamm"-->
-<!--        android:layout_marginTop="70dp"-->
-<!--        android:layout_marginLeft="50dp"/>-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView2"-->
-<!--        android:layout_width="82dp"-->
-<!--        android:layout_height="84dp"-->
-<!--        android:src="@drawable/farm"-->
-<!--        android:layout_marginTop="205dp"-->
-<!--        android:layout_marginLeft="50dp"/>-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView3"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="87dp"-->
-<!--        android:src="@drawable/syringee"-->
-<!--        android:layout_marginTop="348dp"-->
-<!--        android:layout_marginLeft="50dp"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView16"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Data Ayam"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="18dp"-->
-<!--        android:textStyle="bold"-->
-<!--        android:layout_marginTop="65dp"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView19"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="95dp"-->
-<!--        android:text="Ayam Masuk:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold"/>-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView23"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="230dp"-->
-<!--        android:text="Minggu Ini:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView24"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="250dp"-->
-<!--        android:text="Bulan Ini:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView25"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="270dp"-->
-<!--        android:text="Stok Pakan:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView26"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="370dp"-->
-<!--        android:text="Tanggal OVK:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView27"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="390dp"-->
-<!--        android:text="Next OVK:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView21"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="115dp"-->
-<!--        android:text="Ayam Mati:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView22"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="135dp"-->
-<!--        android:text="Jumlah Ayam:"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="12dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView17"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="200dp"-->
-<!--        android:text="Data Pakan"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="18dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/textView18"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginLeft="150dp"-->
-<!--        android:layout_marginTop="340dp"-->
-<!--        android:text="Data OVK"-->
-<!--        android:textColor="@color/black"-->
-<!--        android:textSize="18dp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/ayammasuk"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginLeft="235dp"-->
-<!--        android:layout_marginTop="96dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/ayammati"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginLeft="235dp"-->
-<!--        android:layout_marginTop="116dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/jumlahayam"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginLeft="235dp"-->
-<!--        android:layout_marginTop="136dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/mingguini"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginLeft="235dp"-->
-<!--        android:layout_marginTop="232dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/bulanini"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginStart="235dp"-->
-<!--        android:layout_marginTop="252dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number"-->
-<!--        tools:ignore="LabelFor" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/stokpakan"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginStart="235dp"-->
-<!--        android:layout_marginTop="272dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number"-->
-<!--        tools:ignore="LabelFor"-->
-<!--        android:autofillHints="" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/tanggalovk"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginStart="235dp"-->
-<!--        android:layout_marginTop="372dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number"-->
-<!--        tools:ignore="LabelFor"-->
-<!--        android:autofillHints="" />-->
-
-<!--    <EditText-->
-<!--        android:id="@+id/nextovk"-->
-<!--        android:layout_width="85dp"-->
-<!--        android:layout_height="20dp"-->
-<!--        android:layout_marginStart="235dp"-->
-<!--        android:layout_marginTop="392dp"-->
-<!--        android:ems="20"-->
-<!--        android:inputType="number"-->
-<!--        tools:ignore="LabelFor"-->
-<!--        android:autofillHints="" />-->
-
-
 </FrameLayout>
 

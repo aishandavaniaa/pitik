@@ -1,7 +1,12 @@
 package com.example.user.navigationdrawersample.Auth;
 
-import android.content.Context;
+import static android.content.Context.MODE_PRIVATE;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
+
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,13 +32,75 @@ import java.util.Map;
 public class ApiServices {
     private static String HOST = "http://192.168.43.199:8000";
     private static String API = HOST + "/api/";
-    private static String LOGIN = API + "/login";
-
-
+    private static String LOGIN = API + "login";
 
     public static String getApiLogin() {
         return LOGIN;
     }
+
+    public interface LoginResponseListener {
+        void onSuccess(String response);
+        void onError(String message);
+    }
+
+    public static void login(Context context, String email, String pass, LoginResponseListener listener) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "login", new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.e("Response", response);
+                try {
+                    JSONObject jsonObject = new JSONObject(response);
+                    String message = jsonObject.getString("message");
+                    if (message.equals("success")){
+                        String token = jsonObject.getString("token");
+                        SharedPreferences.Editor editor = context.getSharedPreferences("PHITIX", MODE_PRIVATE).edit();
+                        editor.putString("token", token);
+                        editor.putBoolean("isLogin", true);
+                        editor.apply();
+                        listener.onSuccess("Berhasil Login");
+                    }
+                } catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        if (error.networkResponse != null && error.networkResponse.data != null) {
+                            try {
+                                String responseBody = new String(error.networkResponse.data, "utf-8");
+                                JSONObject jsonObject = new JSONObject(responseBody);
+                                String message = jsonObject.getString("message");
+                                if (message.equals("Email belum terdaftar")) {
+                                    listener.onError("Email Anda Belum Terdaftar");
+                                } else if (message.equals("incorrect password")) {
+                                    listener.onError("Password Anda Salah");
+                                }
+                            } catch (JSONException | UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                                listener.onError("Gagal Login: " + e.getMessage());
+                            }
+                        }
+                        else{
+                            listener.onError("Gagal Login: network response is null");
+                            Log.e("AuthServices", "Error: " + error.getMessage());
+                        }
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("email", email);
+                params.put("password", pass);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
+
 
     public interface CreateDataAyamResponseListener {
         void onSuccess(JSONObject response);

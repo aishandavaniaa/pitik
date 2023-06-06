@@ -109,7 +109,7 @@ public class DataPakanFragment extends Fragment {
                 startActivity(i);
             }
         });
-
+        loadData();
         return view;
     }
 
