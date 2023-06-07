@@ -16,6 +16,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.example.user.navigationdrawersample.fragment.DataAyamFragment;
+import com.example.user.navigationdrawersample.fragment.DataOvkFragment;
 import com.example.user.navigationdrawersample.fragment.DataPakanFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -108,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 closeDrawer();
                 break;
             case R.id.nav_notebooks_id:
-                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id,new NotebooksFragment())
+                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id,new DataOvkFragment())
+                        .addToBackStack(null)
                         .commit();
                 closeDrawer();
                 break;

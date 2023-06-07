@@ -40,6 +40,14 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         buttonLogin = (Button) findViewById(R.id.btn_login);
 
         buttonLogin.setOnClickListener(this);
+        SharedPreferences preferences = getSharedPreferences("PHITIX", MODE_PRIVATE);
+        boolean isLogin = preferences.getBoolean("isLogin", false);
+
+        if (isLogin) {
+            Intent intent = new Intent(login.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
     }
 
@@ -50,64 +58,26 @@ public class login extends AppCompatActivity implements View.OnClickListener {
            String pass = et_password.getText().toString().trim();
 
            if (!email.isEmpty() && !pass.isEmpty()){
-               Login(email,pass);
+              ApiServices.login(getApplicationContext(), email, pass, new ApiServices.LoginResponseListener() {
+                  @Override
+                  public void onSuccess(String response) {
+                      Toast.makeText(login.this, response, Toast.LENGTH_SHORT).show();
+
+                      Intent intent = new Intent(login.this, MainActivity.class);
+                      startActivity(intent);
+                      finish();
+                  }
+
+                  @Override
+                  public void onError(String message) {
+
+                      Toast.makeText(login.this, message, Toast.LENGTH_SHORT).show();
+                  }
+              });
            }else {
                et_email.setError("Masukkan Email!");
                et_password.setError("Masukkan Password!");
            }
        }
     }
-    private void Login(final String email, final String password) {
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, ApiServices.getApiLogin(),
-                new Response.Listener<String>() {
-
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-//                            String value = jsonObject.getString("value");
-                            String pesan = jsonObject.getString("message");
-
-                            if (pesan.equals("success")) {
-                                SharedPreferences sharedPreferences = login.this.getSharedPreferences("PHITIX", MODE_PRIVATE);
-                                Toast.makeText(login.this, "Login Sukses!", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(login.this, MainActivity.class);
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(login.this, "Gagal Login" + pesan, Toast.LENGTH_SHORT).show();
-                            }
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(login.this, "Login Error" + e.toString(), Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-                },
-                    new Response.ErrorListener(){
-                        @Override
-                        public void onErrorResponse(VolleyError error){
-                        Toast.makeText(login.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                    })
-
-        {
-
-            protected Map<String,String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("email",email);
-                params.put("password",password);
-                return params;
-
-            }
-        };
-
-    RequestQueue requestQueue = Volley.newRequestQueue(this);
-    requestQueue.add(stringRequest);
-
-        }
-
 }

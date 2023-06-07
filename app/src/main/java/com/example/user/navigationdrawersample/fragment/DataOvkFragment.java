@@ -1,5 +1,6 @@
 package com.example.user.navigationdrawersample.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -21,10 +22,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.user.navigationdrawersample.AddDataPakanActivity;
+import com.example.user.navigationdrawersample.AddDataAyamActivity;
+import com.example.user.navigationdrawersample.AddDataOvkActivity;
 import com.example.user.navigationdrawersample.Auth.ApiServices;
-import com.example.user.navigationdrawersample.EditDataPakanActivity;
-import com.example.user.navigationdrawersample.Model.DataPakan;
+import com.example.user.navigationdrawersample.EditDataAyamActivity;
+import com.example.user.navigationdrawersample.EditDataOvkActivity;
+import com.example.user.navigationdrawersample.Model.DataAyam;
+import com.example.user.navigationdrawersample.Model.DataOvk;
 import com.example.user.navigationdrawersample.R;
 
 import java.util.ArrayList;
@@ -32,10 +36,10 @@ import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link DataPakanFragment#newInstance} factory method to
+ * Use the {@link DataOvkFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DataPakanFragment extends Fragment {
+public class DataOvkFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -46,7 +50,7 @@ public class DataPakanFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public DataPakanFragment() {
+    public DataOvkFragment() {
         // Required empty public constructor
     }
 
@@ -56,11 +60,11 @@ public class DataPakanFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DataPakanFragment.
+     * @return A new instance of fragment DataOvkFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DataPakanFragment newInstance(String param1, String param2) {
-        DataPakanFragment fragment = new DataPakanFragment();
+    public static DataOvkFragment newInstance(String param1, String param2) {
+        DataOvkFragment fragment = new DataOvkFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -76,26 +80,24 @@ public class DataPakanFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
     RecyclerView rv_data;
-    List<DataPakan> data = new ArrayList<>();
+    List<DataOvk> data = new ArrayList<>();
     Button add;
-    CustomAdapterDataPakan adapter;
+    CustomAdapterDataOvk adapter;
     SwipeRefreshLayout swipeRefreshLayout;
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_data_pakan, container, false);
-        rv_data = view.findViewById(R.id.rv_datapakan);
+        View view = inflater.inflate(R.layout.fragment_data_ovk, container, false);
+        rv_data = view.findViewById(R.id.rv_dataovk);
         add = view.findViewById(R.id.add);
         swipeRefreshLayout = view.findViewById(R.id.refresh);
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rv_data.setLayoutManager(layoutManager);
-        adapter = new CustomAdapterDataPakan( data, getContext());
+        adapter = new CustomAdapterDataOvk( data, getContext());
         rv_data.setAdapter(adapter);
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -105,7 +107,7 @@ public class DataPakanFragment extends Fragment {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getContext(), AddDataPakanActivity.class);
+                Intent i = new Intent(getContext(), AddDataOvkActivity.class);
                 startActivity(i);
             }
         });
@@ -113,14 +115,14 @@ public class DataPakanFragment extends Fragment {
         return view;
     }
 
-    private void loadData() {
+    private void loadData(){
         swipeRefreshLayout.setRefreshing(true);
-        ApiServices.readDataPakan(getContext(), new ApiServices.DataPakanResponseListener() {
+        ApiServices.readDataOvk(getContext(), new ApiServices.DataOvkResponseListener() {
             @Override
-            public void onSuccess(List<DataPakan> dataPakanList) {
-                adapter = new CustomAdapterDataPakan( dataPakanList, getContext());
+            public void onSuccess(List<DataOvk> dataOvkList) {
+                adapter = new CustomAdapterDataOvk( dataOvkList, getContext());
                 rv_data.setAdapter(adapter);
-                data = dataPakanList;
+                data = dataOvkList;
                 adapter.notifyDataSetChanged();
                 swipeRefreshLayout.setRefreshing(false);
             }
@@ -131,40 +133,43 @@ public class DataPakanFragment extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
     }
 
-    public static class CustomAdapterDataPakan extends RecyclerView.Adapter<CustomAdapterDataPakan.ViewHolder> {
-        private List<DataPakan> dataPakanList;
+
+    public static class CustomAdapterDataOvk extends RecyclerView.Adapter<CustomAdapterDataOvk.ViewHolder> {
+        private List<DataOvk> dataOvkList;
         private Context context;
         private LayoutInflater layoutInflater;
 
-        public CustomAdapterDataPakan(List<DataPakan> dataPakanList, Context context) {
-            this.dataPakanList = dataPakanList;
+        public CustomAdapterDataOvk(List<DataOvk> dataOvkList, Context context) {
+            this.dataOvkList = dataOvkList;
             this.context = context;
             this.layoutInflater = LayoutInflater.from(context);
         }
 
         @NonNull
         @Override
-        public CustomAdapterDataPakan.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = layoutInflater.inflate(R.layout.item_list_pakan, parent, false);
-            return new CustomAdapterDataPakan.ViewHolder(view);
+        public CustomAdapterDataOvk.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = layoutInflater.inflate(R.layout.item_list_ovk, parent, false);
+            return new CustomAdapterDataOvk.ViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(@NonNull CustomAdapterDataPakan.ViewHolder holder, int position) {
-            holder.pembelian.setText(dataPakanList.get(position).getPembelian());
-            holder.jenis.setText(dataPakanList.get(position).getJenisPakan());
-            holder.harga.setText(dataPakanList.get(position).getHarga());
-            holder.stok.setText(dataPakanList.get(position).getStok());
-            holder.total.setText(dataPakanList.get(position).getTotal());
+        public void onBindViewHolder(@NonNull CustomAdapterDataOvk.ViewHolder holder, int position) {
+            holder.tanggalovk.setText(dataOvkList.get(position).getTanggalOvk());
+            holder.jumlahayam.setText(dataOvkList.get(position).getJumlahAyam());
+            holder.jenisovk.setText(dataOvkList.get(position).getJenisOvk());
+            holder.nextovk.setText(dataOvkList.get(position).getNextOvk());
+            holder.biayaovk.setText(dataOvkList.get(position).getBiayaOvk());
+            holder.totalbiaya.setText(dataOvkList.get(position).getTotalBiaya());
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int pos = holder.getAdapterPosition();
                     if (pos != RecyclerView.NO_POSITION) {
-                        Intent intent = new Intent(context, EditDataPakanActivity.class);
-                        intent.putExtra("datapakan", dataPakanList.get(pos));
+                        Intent intent = new Intent(context, EditDataOvkActivity.class);
+                        intent.putExtra("dataovk", dataOvkList.get(pos));
                         context.startActivity(intent);
                     }
                 }
@@ -187,9 +192,10 @@ public class DataPakanFragment extends Fragment {
                         ok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                ApiServices.deleteDataPakan(context, dataPakanList.get(pos).getId(), new ApiServices.DeleteDataPakanResponseListener() {
+                                ApiServices.deleteDataOvk(context, dataOvkList.get(pos).getId(), new ApiServices.DeleteDataOvkResponseListener() {
                                     @Override
                                     public void onSuccess(String response) {
+                                        // Notify the adapter
                                         Toast.makeText(alertView.getContext(), response, Toast.LENGTH_SHORT).show();
                                         dialog.cancel();
                                     }
@@ -209,26 +215,26 @@ public class DataPakanFragment extends Fragment {
                             }
                         });
                     }
-
                 }
             });
         }
 
         @Override
         public int getItemCount() {
-            return dataPakanList.size();
+            return dataOvkList.size();
         }
 
         public static class ViewHolder extends RecyclerView.ViewHolder {
-            TextView pembelian, jenis, stok, harga, total;
+            TextView tanggalovk, jenisovk, jumlahayam, nextovk, biayaovk, totalbiaya;
             FrameLayout edit, hapus;
             public ViewHolder(View itemView) {
                 super(itemView);
-                pembelian = itemView.findViewById(R.id.pembelian);
-                jenis = itemView.findViewById(R.id.jenispakan);
-                stok = itemView.findViewById(R.id.stok);
-                harga = itemView.findViewById(R.id.harga);
-                total = itemView.findViewById(R.id.totalayam);
+                tanggalovk = itemView.findViewById(R.id.tglovk);
+                jenisovk = itemView.findViewById(R.id.jenisovk);
+                jumlahayam = itemView.findViewById(R.id.jumlahayam);
+                nextovk = itemView.findViewById(R.id.nextovk);
+                biayaovk = itemView.findViewById(R.id.biayaovk);
+                totalbiaya = itemView.findViewById(R.id.totalbiaya);
                 edit = itemView.findViewById(R.id.editdata);
                 hapus = itemView.findViewById(R.id.hapusdata);
             }
