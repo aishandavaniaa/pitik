@@ -31,10 +31,45 @@ import java.util.List;
 import java.util.Map;
 
 public class ApiServices {
-    private static String HOST = "http://192.168.18.23:8000";
+    private static String HOST = "http://172.20.10.9:8000";
     private static String API = HOST + "/api";
     private static String LOGIN = API + "/login";
 
+    public static String getDataAyam() {
+        return DATA_AYAM;
+    }
+
+    private static String DATA_AYAM = API +"/data-ayam-counts";
+
+    public static String getStokPakan() {
+        return STOK_PAKAN;
+    }
+
+    private static String STOK_PAKAN = API +"/data-pakan-stok";
+
+    public static String getMingguIni() {
+        return MINGGU_INI;
+    }
+
+    private static String MINGGU_INI = API +"/data-pakan-weeks";
+
+    public static String getBulanIni() {
+        return BULAN_INI;
+    }
+
+    private static String BULAN_INI = API +"/data-pakan-month";
+
+    public static String getDataOvk() {
+        return DATA_OVK;
+    }
+
+    private static String DATA_OVK = API +"/data-ovk-last";
+
+    public static String getLOGOUT() {
+        return LOGOUT;
+    }
+
+    private static String LOGOUT = API+"/logout";
 
 
     public static String getApiLogin() {
@@ -47,7 +82,7 @@ public class ApiServices {
     }
 
     public static void login(Context context, String email, String pass, LoginResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "login", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, getApiLogin(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("Response", response);
@@ -103,6 +138,35 @@ public class ApiServices {
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         requestQueue.add(stringRequest);
     }
+
+    public interface LogoutResponseListener {
+        void onSuccess(String message);
+        void onError(String message);
+    }
+
+    public static void logOut(Context context, String token, LogoutResponseListener listener) {
+        StringRequest request = new StringRequest(Request.Method.POST, getLOGOUT(), new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                listener.onSuccess(response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.onError(error.getMessage());
+            }
+        }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("Authorization", "Bearer " + token);
+                return headers;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(request);
+    }
+
 
 
     public interface CreateDataAyamResponseListener {

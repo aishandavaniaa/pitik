@@ -53,13 +53,13 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
                             android:id="@+id/tv_ayam_masuk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
-                            android:text="00"/>
+                            android:textSize="12sp"/>
                     </LinearLayout>
                     <LinearLayout
 
@@ -74,13 +74,13 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
                             android:id="@+id/tv_ayam_mati"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
-                            android:text="00"/>
+                            android:textSize="12sp" />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -94,13 +94,14 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
                             android:id="@+id/tv_jumlah_ayam"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
                             android:textSize="12sp"
-                            android:text="00"/>
+                            />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -142,18 +143,19 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Minggu Ini:"
+                            android:text="Minggu Ini : "
                             android:textColor="@color/black"
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
                             android:id="@+id/tv_minggu_ini"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
                             android:textSize="12sp"
-                            android:text="00"/>
+                            />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -167,13 +169,14 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
                             android:id="@+id/tv_bulan_ini"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
                             android:textSize="12sp"
-                            android:text="00"/>
+                            />
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -187,13 +190,14 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
                             android:id="@+id/tv_stok_pakan"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
                             android:textSize="12sp"
-                            android:text="00"/>
+                            />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -239,13 +243,13 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
-                            android:id="@+id/tanggal_ovk"
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/tv_tanggal_ovk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
-                            android:textSize="12sp"
-                            android:text="00"/>
+                            android:textSize="12sp"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -259,32 +263,16 @@
                             android:fontFamily="@font/poppinsbold"
                             android:textSize="12sp"/>
                         <TextView
+                            android:layout_marginStart="10dp"
+                            android:id="@+id/tv_next_ovk"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppinsregular"
                             android:textColor="@color/black"
                             android:textSize="12sp"
-                            android:text="00"/>
+                            />
                     </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jumlah Ayam : "
-                            android:textColor="@color/black"
-                            android:fontFamily="@font/poppinsbold"
-                            android:textSize="12sp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/poppinsregular"
-                            android:textColor="@color/black"
-                            android:textSize="12sp"
-                            android:text="00"/>
-                    </LinearLayout>
+
 
                 </LinearLayout>
             </LinearLayout>

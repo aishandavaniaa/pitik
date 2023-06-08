@@ -1,6 +1,7 @@
 package com.example.user.navigationdrawersample;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -15,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
+import com.example.user.navigationdrawersample.Auth.ApiServices;
 import com.example.user.navigationdrawersample.fragment.DataAyamFragment;
 import com.example.user.navigationdrawersample.fragment.DataOvkFragment;
 import com.example.user.navigationdrawersample.fragment.DataPakanFragment;
@@ -115,8 +117,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 closeDrawer();
                 break;
             case R.id.logout:
-                Intent i = new Intent(MainActivity.this, login.class);
-                startActivity(i);
+                SharedPreferences preferences = MainActivity.this.getSharedPreferences("PHITIX", MODE_PRIVATE);
+                String token = preferences.getString("token", "");
+                ApiServices.logOut(getApplicationContext(), token, new ApiServices.LogoutResponseListener() {
+                    @Override
+                    public void onSuccess(String message) {
+                        startActivity(new Intent(MainActivity.this,login.class));
+                        Toast.makeText(MainActivity.this,"Berhasil Logout",Toast.LENGTH_SHORT).show();
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.remove("isLogin");
+                        editor.remove("token");
+                        editor.apply();
+
+                    }
+
+                    @Override
+                    public void onError(String message) {
+
+                    }
+                });
                 finish();
                 break;
 
