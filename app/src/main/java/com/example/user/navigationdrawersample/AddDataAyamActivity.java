@@ -43,33 +43,35 @@ public class AddDataAyamActivity extends AppCompatActivity {
         save = findViewById(R.id.save);
         reset = findViewById(R.id.reset);
 
-        tv_tanggal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(AddDataAyamActivity.this,android.R.style.Theme_Material_Light_Dialog_MinWidth,
-                        mDate, year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                dialog.show();
-            }
-        });
-        mDate = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                Calendar selectedDate = Calendar.getInstance();
-                selectedDate.set(year, month, dayOfMonth);
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-                formattedDate = dateFormat.format(selectedDate.getTime());
-
-                tv_tanggal.setText(formattedDate);
-            }
-        };
+//        tv_tanggal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Calendar calendar = Calendar.getInstance();
+//                int year = calendar.get(Calendar.YEAR);
+//                int month = calendar.get(Calendar.MONTH);
+//                int day = calendar.get(Calendar.DAY_OF_MONTH);
+//
+//                DatePickerDialog dialog = new DatePickerDialog(AddDataAyamActivity.this,android.R.style.Theme_Material_Light_Dialog_MinWidth,
+//                        mDate, year,month,day);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+//                dialog.show();
+//            }
+//        });
+//        mDate = new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//
+//                Calendar selectedDate = Calendar.getInstance();
+//                selectedDate.set(year, month, dayOfMonth);
+//
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+//                formattedDate = dateFormat.format(selectedDate.getTime());
+//
+//                tv_tanggal.setText(formattedDate);
+//            }
+//        };
+        formattedDate = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault()).format(new Date());
+        tv_tanggal.setText(formattedDate);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,7 +98,7 @@ public class AddDataAyamActivity extends AppCompatActivity {
                         return;
                     }
 
-                    ApiServices.createDataAyam(getApplicationContext(), new_tanggal, new_jumlah, new_harga, new_mati, new ApiServices.CreateDataAyamResponseListener() {
+                    ApiServices.createDataAyam(getApplicationContext(), new_jumlah, new_harga, new_mati, new ApiServices.CreateDataAyamResponseListener() {
                         @Override
                         public void onSuccess(JSONObject response) {
                             Toast.makeText(AddDataAyamActivity.this, "Berhasil menambah data ayam", Toast.LENGTH_SHORT).show();

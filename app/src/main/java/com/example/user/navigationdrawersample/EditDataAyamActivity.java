@@ -65,33 +65,33 @@ public class EditDataAyamActivity extends AppCompatActivity {
         emati.setText(mati);
         formattedDate = tanggal;
         Log.e("format",formattedDate);
-        etanggal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int month = calendar.get(Calendar.MONTH);
-                int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(EditDataAyamActivity.this,android.R.style.Theme_Material_Light_Dialog_MinWidth,
-                        mDate, year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-                dialog.show();
-            }
-        });
-        mDate = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                Calendar selectedDate = Calendar.getInstance();
-                selectedDate.set(year, month, dayOfMonth);
-
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
-                formattedDate = dateFormat.format(selectedDate.getTime());
-
-                etanggal.setText(formattedDate);
-            }
-        };
+//        etanggal.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Calendar calendar = Calendar.getInstance();
+//                int year = calendar.get(Calendar.YEAR);
+//                int month = calendar.get(Calendar.MONTH);
+//                int day = calendar.get(Calendar.DAY_OF_MONTH);
+//
+//                DatePickerDialog dialog = new DatePickerDialog(EditDataAyamActivity.this,android.R.style.Theme_Material_Light_Dialog_MinWidth,
+//                        mDate, year,month,day);
+//                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+//                dialog.show();
+//            }
+//        });
+//        mDate = new DatePickerDialog.OnDateSetListener() {
+//            @Override
+//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+//
+//                Calendar selectedDate = Calendar.getInstance();
+//                selectedDate.set(year, month, dayOfMonth);
+//
+//                SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy", Locale.getDefault());
+//                formattedDate = dateFormat.format(selectedDate.getTime());
+//
+//                etanggal.setText(formattedDate);
+//            }
+//        };
 
         ebatal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +116,7 @@ public class EditDataAyamActivity extends AppCompatActivity {
                         return;
                     }
 
-                    ApiServices.updateDataAyam(getApplicationContext(), id, new_tanggal, new_jumlah, new_harga, new_mati, new ApiServices.CreateDataAyamResponseListener() {
+                    ApiServices.updateDataAyam(getApplicationContext(), id, new_jumlah, new_harga, new_mati, new ApiServices.CreateDataAyamResponseListener() {
                         @Override
                         public void onSuccess(JSONObject response) {
                             Toast.makeText(EditDataAyamActivity.this, "Berhasil mengupdate data ayam", Toast.LENGTH_SHORT).show();

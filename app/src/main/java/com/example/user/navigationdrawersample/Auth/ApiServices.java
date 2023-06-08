@@ -183,7 +183,7 @@ public class ApiServices {
     }
 
     //create data ayam
-    public static void createDataAyam(Context context, String tanggal_masuk, String jumlah_masuk, String harga_satuan, String mati, CreateDataAyamResponseListener listener) {
+    public static void createDataAyam(Context context, String jumlah_masuk, String harga_satuan, String mati, CreateDataAyamResponseListener listener) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "data-ayam", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -221,7 +221,6 @@ public class ApiServices {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("tanggal_masuk", tanggal_masuk);
                 params.put("jumlah_masuk", jumlah_masuk);
                 params.put("harga_satuan", harga_satuan);
                 params.put("mati", mati);
@@ -292,7 +291,7 @@ public class ApiServices {
     }
 
     //update data ayam
-    public static void updateDataAyam(Context context, String id, String tanggal_masuk, String jumlah_masuk, String harga_satuan,String mati, CreateDataAyamResponseListener listener) {
+    public static void updateDataAyam(Context context, String id, String jumlah_masuk, String harga_satuan,String mati, CreateDataAyamResponseListener listener) {
         StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "data-ayam/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -330,7 +329,6 @@ public class ApiServices {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("tanggal_masuk", tanggal_masuk);
                 params.put("jumlah_masuk", jumlah_masuk);
                 params.put("harga_satuan", harga_satuan);
                 params.put("mati", mati);
