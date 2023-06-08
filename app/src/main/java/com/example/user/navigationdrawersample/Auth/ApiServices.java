@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ApiServices {
-    private static String HOST = "http://172.20.10.9:8000";
+    private static String HOST = "http://192.168.43.199:8000";
     private static String API = HOST + "/api";
     private static String LOGIN = API + "/login";
 
@@ -184,7 +184,7 @@ public class ApiServices {
 
     //create data ayam
     public static void createDataAyam(Context context, String jumlah_masuk, String harga_satuan, String mati, CreateDataAyamResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "data-ayam", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "/data-ayam", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -207,6 +207,9 @@ public class ApiServices {
                                 String responseBody = new String(error.networkResponse.data, "utf-8");
                                 JSONObject jsonObject = new JSONObject(responseBody);
                                 String message = jsonObject.getString("message");
+                                if (message.equals("Data pembelian ayam bulan ini sudah ada")) {
+                                    listener.onError("Data pembelian ayam bulan ini sudah ada");
+                                }
                                 listener.onError(message);
                             } catch (JSONException | UnsupportedEncodingException e) {
                                 e.printStackTrace();
@@ -233,7 +236,7 @@ public class ApiServices {
 
     //read data ayam
     public static void readDataAyam(Context context, final DataAyamResponseListener listener){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "data-ayam", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "/data-ayam", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -253,6 +256,8 @@ public class ApiServices {
                             String totalharga = dataAyamObj.getString("total_harga");
                             String totalayam = dataAyamObj.getString("total_ayam");
                             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
                             Date parsedDate = inputFormat.parse(tanggalmasuk);
 
                             // Format tanggal ke dalam format dd-MMMM-yyyy
@@ -261,6 +266,7 @@ public class ApiServices {
 
                             DataAyam dataAyam = new DataAyam(id,formattedTanggalMasuk,jumlahmasuk,hargasatuan,mati,totalharga,totalayam);
                             dataAyams.add(dataAyam);
+
                         }
                         listener.onSuccess(dataAyams);
                     }
@@ -292,7 +298,7 @@ public class ApiServices {
 
     //update data ayam
     public static void updateDataAyam(Context context, String id, String jumlah_masuk, String harga_satuan,String mati, CreateDataAyamResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "data-ayam/" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "/data-ayam/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -341,7 +347,7 @@ public class ApiServices {
 
     //delete data ayam
     public static void deleteDataAyam(Context context, String id, DeleteDataAyamResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "data-ayam/" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "/data-ayam/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -396,7 +402,7 @@ public class ApiServices {
 
     //create data pakan
     public static void createDataPakan(Context context, String pembelian, String jenis_pakan, String stok, String harga, CreateDataPakanResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "data-pakan", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "/data-pakan", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -446,7 +452,7 @@ public class ApiServices {
 
     //read data pakan
     public static void readDataPakan(Context context, final DataPakanResponseListener listener){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "data-pakan", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "/data-pakan", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -465,14 +471,16 @@ public class ApiServices {
                             String harga = dataPakanObj.getString("harga_kg");
                             String totalharga = dataPakanObj.getString("total_harga");
                             SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
                             Date parsedDate = inputFormat.parse(pembelian);
 
                             // Format tanggal ke dalam format dd-MMMM-yyyy
                             SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMMM yyyy");
                             String formattedPembelian = outputFormat.format(parsedDate);
-
                             DataPakan dataPakan = new DataPakan(id,formattedPembelian,jenis,stok,harga,totalharga);
                             dataPakans.add(dataPakan);
+
                         }
                         listener.onSuccess(dataPakans);
                     }
@@ -504,7 +512,7 @@ public class ApiServices {
 
     //update data pakan
     public static void updateDataPakan(Context context, String id, String pembelian, String jenis_pakan, String stok,String harga, CreateDataPakanResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "data-pakan/" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "/data-pakan/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -554,7 +562,7 @@ public class ApiServices {
 
     //delete data pakan
     public static void deleteDataPakan(Context context, String id, DeleteDataPakanResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "data-pakan/" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "/data-pakan/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -606,7 +614,7 @@ public class ApiServices {
     }
 
     public static void createDataOvk(Context context, String tanggalOvk, String jenisOvk, String jumlahAyam, String nextOvk, String biayaOvk, CreateDataOvkResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "data-ovk", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "/data-ovk", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -656,7 +664,7 @@ public class ApiServices {
     }
 
     public static void readDataOvk(Context context, final DataOvkResponseListener listener){
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "data-ovk", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, API + "/data-ovk", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -716,7 +724,7 @@ public class ApiServices {
     }
 
     public static void updateDataOvk(Context context, String id, String tanggalOvk, String jenisOvk, String jumlahAyam, String nextOvk, String biayaOvk, CreateDataOvkResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "data-ovk/" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.PUT, API + "/data-ovk/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
@@ -766,7 +774,7 @@ public class ApiServices {
     }
 
     public static void deleteDataOvk(Context context, String id, DeleteDataOvkResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "data-ovk/" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.DELETE, API + "/data-ovk/" + id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
