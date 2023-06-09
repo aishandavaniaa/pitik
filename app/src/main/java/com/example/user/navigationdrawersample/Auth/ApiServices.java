@@ -33,7 +33,6 @@ import java.util.Map;
 public class ApiServices {
     private static String HOST = "http://192.168.43.199:8000";
     private static String API = HOST + "/api";
-    private static String LOGIN = API + "/login";
 
     public static String getDataAyam() {
         return DATA_AYAM;
@@ -65,16 +64,7 @@ public class ApiServices {
 
     private static String DATA_OVK = API +"/data-ovk-last";
 
-    public static String getLOGOUT() {
-        return LOGOUT;
-    }
 
-    private static String LOGOUT = API+"/logout";
-
-
-    public static String getApiLogin() {
-        return LOGIN;
-    }
 
     public interface LoginResponseListener {
         void onSuccess(String response);
@@ -82,7 +72,7 @@ public class ApiServices {
     }
 
     public static void login(Context context, String email, String pass, LoginResponseListener listener) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, getApiLogin(), new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API + "/login", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e("Response", response);
@@ -145,7 +135,7 @@ public class ApiServices {
     }
 
     public static void logOut(Context context, String token, LogoutResponseListener listener) {
-        StringRequest request = new StringRequest(Request.Method.POST, getLOGOUT(), new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.POST, API + "/logout", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 listener.onSuccess(response);
